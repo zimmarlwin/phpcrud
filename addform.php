@@ -26,7 +26,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Home</a>
+                    <a href="index3.html" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -99,7 +99,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-        with font-awesome or any other icon font library -->
+with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -138,8 +138,8 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <span><a href="addform.php" class="btn btn-danger">Add New Data</a></span>
-                            <span><a href="#" class="btn btn-primary">Delete All</a></span>
+                            <span><a href="addform.php" class="btn btn-danger">All Data</a></span>
+
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -167,40 +167,24 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <table id="example2"
-                                                    class="table table-bordered table-hover dataTable dtr-inline"
-                                                    aria-describedby="example2_info">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Sr.</th>
-                                                            <th class="sorting sorting_asc" tabindex="0"
-                                                                aria-controls="example2" rowspan="1" colspan="1"
-                                                                aria-sort="ascending"
-                                                                aria-label="Rendering engine: activate to sort column descending">
-                                                                Title</th>
-                                                            <th class="sorting" tabindex="0" aria-controls="example2"
-                                                                rowspan="1" colspan="1"
-                                                                aria-label="Browser: activate to sort column ascending">
-                                                                Discription</th>
-                                                            <th class="sorting" tabindex="0" aria-controls="example2"
-                                                                rowspan="1" colspan="2"
-                                                                aria-label="Platform(s): activate to sort column ascending">
-                                                                Action</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr class="">
-                                                            <td><input type="checkbox"></td>
-                                                            <td class="dtr-control sorting_1" tabindex="0">1</td>
-                                                            <td>Title Name</td>
-                                                            <td>Description Name</td>
-                                                            <td><button class="btn btn-danger">Delete</button>
-                                                                <button class="btn btn-primary">Edit</button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                                <form>
+                                                    <div class="card-body">
+                                                        <div class="form-group">
+                                                            <label>Title</label>
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Enter Title">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="exampleInputPassword1">Description</label>
+                                                            <textarea name="" id="" cols="30" rows="10"
+                                                                class="form-control"
+                                                                placeholder="Enter Description"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -219,9 +203,6 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-
-
-
         <!-- Main Footer -->
         <footer class="main-footer">
             <!-- Default to the left -->
