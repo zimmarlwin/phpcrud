@@ -58,15 +58,18 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr class="">
-                                                    <td><input type="checkbox"></td>
+                                                <?php foreach($datas as $data): ?>
+                                                <tr class="<?= $data->is_done ? 'done' : ''; ?>">
+                                                    <td><input type="checkbox" <?= $data->is_done ? 'checked' : ''; ?>>
+                                                    </td>
                                                     <td class="dtr-control sorting_1" tabindex="0">1</td>
-                                                    <td>Title Name</td>
-                                                    <td>Description Name</td>
+                                                    <td><?= h($data->title); ?></td>
+                                                    <td><?= h($data->description); ?></td>
                                                     <td><button class="btn btn-danger">Delete</button>
                                                         <button class="btn btn-primary">Edit</button>
                                                     </td>
                                                 </tr>
+                                                <?php endforeach; ?>
                                             </tbody>
                                         </table>
                                     </div>

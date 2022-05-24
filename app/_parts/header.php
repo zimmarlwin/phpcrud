@@ -1,3 +1,20 @@
+<?php
+    require_once(__DIR__ . '/config.php');
+    
+    createToken();
+    $pdo = getPdo();
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST')
+    {
+        
+        validateToken();
+        addData($pdo);
+        header('Location:' . SITE_URL);
+        exit;
+    }
+    $datas = getData($pdo);    
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +30,8 @@
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- Custom style -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="hold-transition sidebar-mini">

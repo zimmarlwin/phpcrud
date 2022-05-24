@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <span><a href="addform.php" class="btn btn-danger">All Data</a></span>
+                    <span><a href="http://localhost/php_crud/web/" class="btn btn-danger">All Data</a></span>
 
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -35,20 +35,22 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <form>
+                                        <form action="" method="POST">
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <label>Title</label>
-                                                    <input type="text" class="form-control" placeholder="Enter Title">
+                                                    <input type="text" class="form-control" placeholder="Enter Title"
+                                                        name="title">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword1">Description</label>
-                                                    <textarea name="" id="" cols="30" rows="10" class="form-control"
-                                                        placeholder="Enter Description"></textarea>
+                                                    <textarea name="description" id="" cols="30" rows="10"
+                                                        class="form-control" placeholder="Enter Description"></textarea>
                                                 </div>
                                             </div>
                                             <div class="card-footer">
                                                 <button type="submit" class="btn btn-primary">Submit</button>
+                                                <input type="hidden" value="<?= h($_SESSION['token']);?>" name="token">
                                             </div>
                                         </form>
                                     </div>
