@@ -6,8 +6,8 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <span><a href="addform.php" class="btn btn-danger">Add New Data</a></span>
-                    <span><a href="#" class="btn btn-primary">Delete All</a></span>
+                    <span><a href="addform.php" class="btn btn-danger">新規情報追加</a></span>
+                    <span><a href="#" class="btn btn-primary">全削除</a></span>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -41,32 +41,51 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Sr.</th>
+                                                    <th>Sr</th>
                                                     <th class="sorting sorting_asc" tabindex="0"
                                                         aria-controls="example2" rowspan="1" colspan="1"
                                                         aria-sort="ascending"
                                                         aria-label="Rendering engine: activate to sort column descending">
-                                                        Title</th>
+                                                        タイトル</th>
                                                     <th class="sorting" tabindex="0" aria-controls="example2"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Browser: activate to sort column ascending">
-                                                        Discription</th>
+                                                        情報</th>
                                                     <th class="sorting" tabindex="0" aria-controls="example2"
                                                         rowspan="1" colspan="2"
                                                         aria-label="Platform(s): activate to sort column ascending">
-                                                        Action</th>
+                                                        運動</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php foreach($datas as $data): ?>
-                                                <tr class="<?= $data->is_done ? 'done' : ''; ?>">
-                                                    <td><input type="checkbox" <?= $data->is_done ? 'checked' : ''; ?>>
+                                                <tr>
+                                                    <td>
+                                                        <form action="?action=checkbox_action" method="POST">
+                                                            <input type="checkbox"
+                                                                <?= $data->is_done ? 'checked' : ''; ?>>
+                                                            <input type="hidden" name="id" value="<?= h($data->id);?>">
+                                                            <input type="hidden" value="<?= h($_SESSION['token']);?>"
+                                                                name="token">
+                                                        </form>
                                                     </td>
-                                                    <td class="dtr-control sorting_1" tabindex="0">1</td>
-                                                    <td><?= h($data->title); ?></td>
-                                                    <td><?= h($data->description); ?></td>
-                                                    <td><button class="btn btn-danger">Delete</button>
-                                                        <button class="btn btn-primary">Edit</button>
+                                                    <td class="<?= $data->is_done ? 'done' : ''; ?>">1</td>
+                                                    <td class="<?= $data->is_done ? 'done' : ''; ?>">
+                                                        <?= h($data->title); ?></td>
+                                                    <td class="<?= $data->is_done ? 'done' : ''; ?>">
+                                                        <?= h($data->description); ?></td>
+                                                    <td class="d-flex">
+                                                        <form action="?action=data_delete" method="POST">
+                                                            <input type="button" class="delete btn btn-danger mr-2"
+                                                                value="削除">
+                                                            <input type="hidden" name="id" value="<?= h($data->id);?>">
+                                                            <input type="hidden" value="<?= h($_SESSION['token']);?>"
+                                                                name="token">
+                                                        </form>
+
+                                                        <a href="editform.php?id=<?= h($data->id);?>"><button
+                                                                class="btn btn-primary">編集</button></a>
+
                                                     </td>
                                                 </tr>
                                                 <?php endforeach; ?>

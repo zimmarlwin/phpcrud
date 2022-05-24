@@ -6,13 +6,31 @@
 
     if($_SERVER['REQUEST_METHOD'] === 'POST')
     {
-        
         validateToken();
-        addData($pdo);
+        $action = filter_input(INPUT_GET, 'action');
+       
+        switch($action)
+        {
+            case'data_action':  
+                addData($pdo);
+                break;
+            case'checkbox_action':
+                addCheckdata($pdo);
+                break;
+            case'data_delete':
+                deleteCheckdata($pdo);
+                break;
+            case'data_edit':                
+                editData($pdo);
+                break;                
+            default:
+                exit;
+        }   
         header('Location:' . SITE_URL);
         exit;
     }
-    $datas = getData($pdo);    
+    $datas = getData($pdo); 
+    
     
 ?>
 <!DOCTYPE html>
