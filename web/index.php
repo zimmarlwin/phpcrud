@@ -1,18 +1,26 @@
-<?php include("../app/_parts/header.php");?>
+<?php 
+    include("../app/_parts/header.php");
+    use MyApp\Utils;
+?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <span><a href="addform.php" class="btn btn-danger">新規情報追加</a></span>
-                    <span><a href="#" class="btn btn-primary">全削除</a></span>
+                <div class="col-sm-6 d-flex">
+                    <span><a href="addform.php" class="btn btn-primary mr-2">新規情報追加</a></span>
+                    <span>
+                        <form action="?action=data_purge" method="POST">
+                            <input type="button" class="purge btn btn-danger mr-2" value="削除">
+                            <input type="hidden" value="<?= Utils::h($_SESSION['token']);?>" name="token">
+                        </form>
+                    </span>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item"><a href="#">ホーム</a></li>
+                        <li class="breadcrumb-item active">掲示板</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -58,32 +66,40 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php foreach($datas as $data): ?>
+                                                <?php foreach($datas as $data):?>
+
                                                 <tr>
                                                     <td>
                                                         <form action="?action=checkbox_action" method="POST">
                                                             <input type="checkbox"
                                                                 <?= $data->is_done ? 'checked' : ''; ?>>
-                                                            <input type="hidden" name="id" value="<?= h($data->id);?>">
-                                                            <input type="hidden" value="<?= h($_SESSION['token']);?>"
+                                                            <input type="hidden" name="id"
+                                                                value="<?= Utils::h($data->id);?>">
+                                                            <input type="hidden"
+                                                                value="<?= Utils::h($_SESSION['token']);?>"
                                                                 name="token">
                                                         </form>
                                                     </td>
-                                                    <td class="<?= $data->is_done ? 'done' : ''; ?>">1</td>
                                                     <td class="<?= $data->is_done ? 'done' : ''; ?>">
-                                                        <?= h($data->title); ?></td>
+
+                                                        <?= 1; ?>
+                                                    </td>
                                                     <td class="<?= $data->is_done ? 'done' : ''; ?>">
-                                                        <?= h($data->description); ?></td>
+                                                        <?= Utils::h($data->title); ?></td>
+                                                    <td class="<?= $data->is_done ? 'done' : ''; ?>">
+                                                        <?= Utils::h($data->description); ?></td>
                                                     <td class="d-flex">
                                                         <form action="?action=data_delete" method="POST">
                                                             <input type="button" class="delete btn btn-danger mr-2"
                                                                 value="削除">
-                                                            <input type="hidden" name="id" value="<?= h($data->id);?>">
-                                                            <input type="hidden" value="<?= h($_SESSION['token']);?>"
+                                                            <input type="hidden" name="id"
+                                                                value="<?= Utils::h($data->id);?>">
+                                                            <input type="hidden"
+                                                                value="<?= Utils::h($_SESSION['token']);?>"
                                                                 name="token">
                                                         </form>
 
-                                                        <a href="editform.php?id=<?= h($data->id);?>"><button
+                                                        <a href="editform.php?id=<?= Utils::h($data->id);?>"><button
                                                                 class="btn btn-primary">編集</button></a>
 
                                                     </td>

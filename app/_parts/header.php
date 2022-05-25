@@ -1,36 +1,12 @@
 <?php
     require_once(__DIR__ . '/config.php');
-    
-    createToken();
-    $pdo = getPdo();
+    use MyApp\Database;
+    use MyApp\Data;      
+    $pdo = Database::getPdo();
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST')
-    {
-        validateToken();
-        $action = filter_input(INPUT_GET, 'action');
-       
-        switch($action)
-        {
-            case'data_action':  
-                addData($pdo);
-                break;
-            case'checkbox_action':
-                addCheckdata($pdo);
-                break;
-            case'data_delete':
-                deleteCheckdata($pdo);
-                break;
-            case'data_edit':                
-                editData($pdo);
-                break;                
-            default:
-                exit;
-        }   
-        header('Location:' . SITE_URL);
-        exit;
-    }
-    $datas = getData($pdo); 
-    
+    $data = new Data($pdo);
+    $data->processData();
+    $datas = $data->getAll();   
     
 ?>
 <!DOCTYPE html>
@@ -62,10 +38,10 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">ホーム</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
+                    <a href="#" class="nav-link">お問い合わせ</a>
                 </li>
             </ul>
 

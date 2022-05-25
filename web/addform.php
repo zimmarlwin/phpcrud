@@ -1,4 +1,7 @@
-<?php include("../app/_parts/header.php");?>
+<?php 
+    include("../app/_parts/header.php");
+    use MyApp\Utils;
+?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -6,13 +9,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <span><a href="http://localhost/php_crud/web/" class="btn btn-danger">All Data</a></span>
+                    <span><a href="http://localhost/php_crud/web/" class="btn btn-danger">全情報</a></span>
 
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item"><a href="#">ホーム</a></li>
+                        <li class="breadcrumb-item active">掲示板</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -38,19 +41,20 @@
                                         <form action="?action=data_action" method="POST">
                                             <div class="card-body">
                                                 <div class="form-group">
-                                                    <label>Title</label>
+                                                    <label>タイトル</label>
                                                     <input type="text" class="form-control" placeholder="Enter Title"
                                                         name="title">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="exampleInputPassword1">Description</label>
+                                                    <label for="exampleInputPassword1">除法</label>
                                                     <textarea name="description" id="" cols="30" rows="10"
                                                         class="form-control" placeholder="Enter Description"></textarea>
                                                 </div>
                                             </div>
                                             <div class="card-footer">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                                <input type="hidden" value="<?= h($_SESSION['token']);?>" name="token">
+                                                <button type="submit" class="btn btn-primary">押す</button>
+                                                <input type="hidden" value="<?= Utils::h($_SESSION['token']);?>"
+                                                    name="token">
                                             </div>
                                         </form>
                                     </div>
