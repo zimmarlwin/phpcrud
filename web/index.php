@@ -66,10 +66,8 @@ use MyApp\Utils;
                                                 <?php foreach($datas as $data):?>
 
                                                 <tr class="remove">
-                                                    <td>
+                                                    <td data-id="<?= Utils::h($data->id);?>">
                                                         <input class="check" type="checkbox"
-                                                            data-id="<?= Utils::h($data->id);?>" ,
-                                                            data-token="<?= Utils::h($_SESSION['token']);?>" ,
                                                             <?= $data->is_done ? 'checked' : ''; ?>>
                                                     </td>
                                                     <td>
@@ -77,9 +75,9 @@ use MyApp\Utils;
                                                     </td>
                                                     <td>
                                                         <?= Utils::h($data->description); ?></td>
-                                                    <td class="d-flex">
-                                                        <input type="button" data-id="<?= Utils::h($data->id);?>"
-                                                            class="delete btn btn-danger mr-2" value="削除">
+                                                    <td class="d-flex" data-id="<?= Utils::h($data->id);?>">
+                                                        <input type="button" class="delete btn btn-danger mr-2"
+                                                            value="削除">
 
                                                         <a href="editform.php?id=<?= Utils::h($data->id);?>"><button
                                                                 class="btn btn-primary">編集</button></a>
@@ -106,4 +104,4 @@ use MyApp\Utils;
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<?php include("../app/_parts/footer.php");?>
+<?php include("../app/_parts/footer.php");?>]

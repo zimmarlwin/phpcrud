@@ -67,8 +67,7 @@
                                             <div class="card-footer">
                                                 <button type="submit" class="btn btn-primary">押す</button>
                                                 <input type="hidden" value="<?= Utils::h($id);?>" name="id">
-                                                <input type="hidden" value="<?= Utils::h($_SESSION['token']);?>"
-                                                    name="token">
+
                                             </div>
                                         </form>
                                     </div>

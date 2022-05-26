@@ -45,8 +45,7 @@ class Data{
                 exit;
             }
     }
-
-
+    
     private function add()
         {
             $title = trim(filter_input(INPUT_POST, 'title'));

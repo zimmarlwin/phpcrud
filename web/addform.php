@@ -1,6 +1,6 @@
 <?php 
-    include("../app/_parts/header.php");
-    use MyApp\Utils;
+include("../app/_parts/header.php");
+use MyApp\Utils;
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">

@@ -10,7 +10,7 @@
             fetch('?action=checkbox_action', {
                 method: 'POST',
                 body: new URLSearchParams({
-                    id: checkboxbutton.dataset.id , 
+                    id: checkboxbutton.parentNode.dataset.id , 
                     token: token,
                 }),
             });      
@@ -28,7 +28,7 @@
             fetch('?action=data_delete', {
                 method: 'POST',
                 body: new URLSearchParams({
-                    id: deletebutton.dataset.id , 
+                    id: deletebutton.parentNode.dataset.id , 
                     token: token,
                 }),
             });  
