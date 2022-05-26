@@ -1,7 +1,8 @@
 <?php
     require_once(__DIR__ . '/config.php');
     use MyApp\Database;
-    use MyApp\Data;      
+    use MyApp\Data;  
+    use MyApp\Utils;     
     $pdo = Database::getPdo();
 
     $data = new Data($pdo);
@@ -29,7 +30,7 @@
 
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini main" data-token="<?= Utils::h($_SESSION['token']);?>">
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">

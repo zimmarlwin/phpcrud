@@ -1,5 +1,8 @@
 'use strict';
 {
+    const token = document.querySelector('.main').dataset.token;
+    
+    console.log(token);
     const doneClass = document.querySelectorAll('.done');
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     checkboxes.forEach(checkboxbutton=>{
@@ -8,7 +11,7 @@
                 method: 'POST',
                 body: new URLSearchParams({
                     id: checkboxbutton.dataset.id , 
-                    token: checkboxbutton.dataset.token,
+                    token: token,
                 }),
             });      
             
@@ -26,34 +29,30 @@
                 method: 'POST',
                 body: new URLSearchParams({
                     id: deletebutton.dataset.id , 
-                    token: deletebutton.dataset.token,
+                    token: token,
                 }),
             });  
             removeDiv.remove();        
         });
     });
-    
-   
-    
+
     const purge = document.querySelector('.purge');  
-    const allDiv = document.querySelectorAll('.remove');   
-  
     purge.addEventListener('click',() => {
         if(!confirm('Are you sure?')){
-            return;;
-        }
+            return;
+        } 
         fetch('?action=data_purge', {
             method: 'POST',
             body: new URLSearchParams({
-                token: purge.dataset.token,
+                token: token,
             }),
-        }); 
-    allDiv.forEach(all=>{
-        if(all.children[0].checked){
-            all.remove();
-        }
-    })
-    
-});
+        });
 
+        const allDiv = document.querySelectorAll('.remove'); 
+        allDiv.forEach(all=>{
+            if(all.children[0].children[0].checked){
+                all.remove();
+            }
+        });       
+    });
 }

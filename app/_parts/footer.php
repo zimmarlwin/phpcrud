@@ -16,7 +16,7 @@
  <!-- AdminLTE App -->
  <script src="dist/js/adminlte.min.js"></script>
  <!-- custom js -->
- <script src="js/script.js"></script>
+ <script src="js/customscript.js"></script>
  </body>
 
  </html>

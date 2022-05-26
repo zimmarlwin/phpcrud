@@ -11,8 +11,7 @@ use MyApp\Utils;
                 <div class="col-sm-6 d-flex">
                     <span><a href="addform.php" class="btn btn-primary mr-2">新規情報追加</a></span>
                     <span>
-                        <input type="button" data-token="<?= Utils::h($_SESSION['token']);?>" ,
-                            class="purge btn btn-danger mr-2" value="削除">
+                        <input type="button" class="purge btn btn-danger mr-2" value="削除">
                     </span>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
@@ -68,7 +67,8 @@ use MyApp\Utils;
 
                                                 <tr class="remove">
                                                     <td>
-                                                        <input type="checkbox" data-id="<?= Utils::h($data->id);?>" ,
+                                                        <input class="check" type="checkbox"
+                                                            data-id="<?= Utils::h($data->id);?>" ,
                                                             data-token="<?= Utils::h($_SESSION['token']);?>" ,
                                                             <?= $data->is_done ? 'checked' : ''; ?>>
                                                     </td>
@@ -79,12 +79,10 @@ use MyApp\Utils;
                                                         <?= Utils::h($data->description); ?></td>
                                                     <td class="d-flex">
                                                         <input type="button" data-id="<?= Utils::h($data->id);?>"
-                                                            data-token="<?= Utils::h($_SESSION['token']);?>"
                                                             class="delete btn btn-danger mr-2" value="削除">
 
                                                         <a href="editform.php?id=<?= Utils::h($data->id);?>"><button
                                                                 class="btn btn-primary">編集</button></a>
-
                                                     </td>
                                                 </tr>
                                                 <?php endforeach; ?>

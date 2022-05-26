@@ -91,8 +91,7 @@ class Data{
             $stmt->bindValue('id', $id, \PDO::PARAM_INT);
             $stmt->bindValue('title', $title, \PDO::PARAM_STR);
             $stmt->bindValue('description', $description, \PDO::PARAM_STR);
-            $stmt->execute(); 
-            
+            $stmt->execute();
+            header('Location:http://localhost/php_crud/web/');
         }
-    
 }
