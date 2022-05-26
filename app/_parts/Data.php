@@ -42,7 +42,6 @@ class Data{
                     default:
                         exit;
                 }   
-                header('Location:' . SITE_URL);
                 exit;
             }
     }
@@ -56,6 +55,7 @@ class Data{
             $stmt->bindValue('title', $title, \PDO::PARAM_STR);
             $stmt->bindValue('description', $description, \PDO::PARAM_STR);
             $stmt->execute();  
+            header('Location:http://localhost/php_crud/web/');
         }
     private function addCheckdata()
         {
